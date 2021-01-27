@@ -78,7 +78,7 @@
 // Define the frequency band the gateway will listen on. Valid options are
 // EU863_870	Europe 
 // US902_928	North America
-// AU925_928	Australia
+// AU915_928	Australia
 // CN470_510	China
 // IN865_867	India
 // CN779-787	(Not Used!)
@@ -86,7 +86,7 @@
 // AS923		(Not Used)
 // You can find the definitions in "loraModem.h" and frequencies in
 // See https://www.thethingsnetwork.org/docs/lorawan/frequency-plans.html
-#define EU863_870 1
+#define AU915_928 1
  
 
 // Define the CLASS mode of the gateway
@@ -166,7 +166,7 @@
 //	4: ESP32, Heltec and TTGO pin out (should work for Heltec, 433 and Oled too).
 //	5: Other, define your own in loraModem.h (does not include GPS Code)
 #if !defined _PIN_OUT
-#	define _PIN_OUT 1
+#	define _PIN_OUT 4
 #endif
 
 
@@ -181,7 +181,7 @@
 //		in order to receive downlink messages. This is the default mode.
 // NOTE: In all other cases, value 0 works for most gateways with CAD enabled
 #if !defined _STRICT_1CH
-#	define _STRICT_1CH 1
+#	define _STRICT_1CH 0
 #endif
 
 
@@ -217,7 +217,7 @@
 // _OLED==1;	0.9" Oled Screen based on SSD1306
 // _OLED==2;	1.3" Oled screens for Wemos, 128x64 SH1106
 #if !defined _OLED
-#	define _OLED 1
+#	define _OLED 0
 #endif
 
 
@@ -258,14 +258,14 @@
 // 1: _LOCALSERVER is used for received messages
 // 2: Also transmittes messages are encoded
 #if !defined _LOCALSERVER
-#	define _LOCALSERVER 1					// See server definitions for decodes
+#	define _LOCALSERVER 0					// See server definitions for decodes
 #endif
 
 
 // ntp
 // Please add daylight saving time to NTP_TIMEZONES when desired
-#define NTP_TIMESERVER "nl.pool.ntp.org"	// Country and region specific
-#define NTP_TIMEZONES	2					// How far is our Timezone from UTC (excl daylight saving/summer time)
+#define NTP_TIMESERVER "au.pool.ntp.org"	// Country and region specific
+#define NTP_TIMEZONES	10					// How far is our Timezone from UTC (excl daylight saving/summer time)
 #define SECS_IN_HOUR	3600
 #define NTP_INTR 0							// Do NTP processing with interrupts or in loop();
 
@@ -290,7 +290,7 @@
 // 1: Use the nodes as a translation table for hex codes to names (in TLN)
 // 2: Same as 1, but is nodes NOT in the nodes list below they are NOT shown
 // NOTE: We probably will make this list dynamic!
-#define _TRUSTED_NODES 1
+#define _TRUSTED_NODES 0
 
 
 // ========================================================================
@@ -336,7 +336,7 @@
 #define _PULL_INTERVAL 16					// PULL_DATA messages to server to get downstream in seconds
 #define _STAT_INTERVAL 120					// Send a 'stat' message to server
 #define _NTP_INTERVAL 3600					// How often do we want time NTP synchronization
-#define _WWW_INTERVAL 60					// Number of seconds before we refresh the WWW page
+#define _WWW_INTERVAL 15					// Number of seconds before we refresh the WWW page
 #define _FILE_INTERVAL 30					// Number of timer (in secs) before writing to files
 #define _MSG_INTERVAL 31					// Message timeout timer in seconds
 #define _RST_INTERVAL 125					// Reset interval in seconds, total chip reset
@@ -360,6 +360,6 @@
 // and need no changing. When _REPEATER function is selected, we do not
 // use the backend function to send message to server over MQTT.
 #if _REPEATER==0
-#	define _TTNSERVER "router.eu.thethings.network"
+#	define _TTNSERVER "thethings.meshed.com.au"
 #	define _TTNPORT 1700							// Standard port for TTN
 #endif
