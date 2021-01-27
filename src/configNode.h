@@ -36,7 +36,7 @@
 
 	// For ESP32 based T_BEAM/TTGO boards these two are normally included
 	// If included make value 1, else if not, make them 0
-#	define _GPS 1
+#	define _GPS 0
 #	define _BATTERY 1
 #endif //_GATEWAYNODE
 
