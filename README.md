@@ -67,6 +67,22 @@ and the libraries directory "libraries". When unpacking the source at github:
 Copy the content of the "src" directory to the Aruino IDE "ESP-sc-gway" directory and copy the contents 
 of the "lib" directory to the Arduino IDE "libraries" directory;
 
+## Arduino CLI
+
+You need to make an alias for the 'src' dir that has the same base name as ESP-sc-gway.ino to make the Arduino IDE/CLI happy.
+
+The "ln" command below makes a symbolic link (alias).
+
+Then you can just use the arduino-cli invocation to compile.
+
+```
+ln -s src ESP-1c-gway
+cd ESP-1c-gway
+arduino-cli compile -b esp32:esp32:heltec_wifi_lora_32 ESP-sc-gway.ino
+```
+
+
+
 ## testing
 
 The single channel gateway has been tested on a gateway with the Wemos D1 Mini, 
