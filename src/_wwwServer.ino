@@ -453,7 +453,7 @@ static void openWebPage()
 	response += ".config_table {max_width:100%; min-width:300px; width:98%; border:1px solid black; border-collapse:collapse;}";
 	response += "</style></HEAD><BODY>";
 	
-	response +="<h1>ESP Gateway Config</h1>";
+	response +="<h1>ESP LoRaWAN Gateway</h1>";
 
 	response +="<p style='font-size:10px;'>";
 	response +="Version: "; response+=VERSION;
