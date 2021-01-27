@@ -292,7 +292,7 @@ void setup() {
 
 	char MAC_char[19];										// XXX Unbelievable
 	MAC_char[18] = 0;
-	char hostname[12];										// hostname space
+	char hostname[24];										// hostname space
 
 	initConfig(&gwayConfig);
 		
@@ -391,6 +391,8 @@ void setup() {
 	WiFi.mode(WIFI_STA);									// WiFi settings for connections
 	WiFi.setAutoConnect(true);
 	WiFi.macAddress(MAC_array);
+	WiFi.setHostname("LoRaWAN");
+
     sprintf(MAC_char,"%02x:%02x:%02x:%02x:%02x:%02x",
 		MAC_array[0],MAC_array[1],MAC_array[2],MAC_array[3],MAC_array[4],MAC_array[5]);
 
@@ -419,7 +421,7 @@ void setup() {
 	// After there is a WiFi router connection, we set the hostname with last 3 bytes of MAC address.
 #	if defined(ESP32_ARCH)
 		// ESP32
-		sprintf(hostname, "%s%02x%02x%02x", "esp32-", MAC_array[3], MAC_array[4], MAC_array[5]);
+		snprintf(hostname, sizeof(hostname), "%s%02x%02x%02x", "LoRaWAN-", MAC_array[3], MAC_array[4], MAC_array[5]);
 		WiFi.setHostname(hostname);
 		MDNS.begin(hostname);
 #	else
